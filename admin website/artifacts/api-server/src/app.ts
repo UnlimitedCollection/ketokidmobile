@@ -91,6 +91,12 @@ app.use(
 
 app.use("/api", router);
 
+app.get("/{*path}", (req: Request, res: Response) => {
+  const host = req.hostname;
+  const redirectUrl = `https://${host}:5000${req.originalUrl}`;
+  res.redirect(302, redirectUrl);
+});
+
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   req.log?.error({ err }, "Unhandled error");
   const status = (err as { status?: number }).status ?? 500;
