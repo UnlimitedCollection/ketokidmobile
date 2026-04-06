@@ -1,6 +1,7 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { AuthProvider, useAuth } from "@/hooks/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import SplashScreen from "@/components/splash-screen";
 
 import LoginPage from "@/pages/login";
 import DashboardPage from "@/pages/dashboard";
@@ -19,18 +20,7 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
     }
   }, [isAuthenticated, isLoading, setLocation]);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-surface">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-3 border-primary/20 border-t-primary rounded-full animate-spin" />
-          <p className="text-sm font-medium text-on-surface-variant">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) return null;
+  if (isLoading || !isAuthenticated) return null;
 
   return <Component />;
 }
@@ -45,31 +35,41 @@ function PublicRoute({ component: Component }: { component: React.ComponentType 
     }
   }, [isAuthenticated, isLoading, setLocation]);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-surface">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-3 border-primary/20 border-t-primary rounded-full animate-spin" />
-        </div>
-      </div>
-    );
-  }
-
-  if (isAuthenticated) return null;
+  if (isLoading || isAuthenticated) return null;
 
   return <Component />;
 }
 
-function Router() {
+function AppContent() {
+  const { isLoading } = useAuth();
+  const [showSplash, setShowSplash] = useState(true);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMinTimeElapsed(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading && minTimeElapsed) {
+      setShowSplash(false);
+    }
+  }, [isLoading, minTimeElapsed]);
+
   return (
-    <Switch>
-      <Route path="/login" component={() => <PublicRoute component={LoginPage} />} />
-      <Route path="/" component={() => <ProtectedRoute component={DashboardPage} />} />
-      <Route path="/plan/:mealTypeId" component={() => <ProtectedRoute component={MealPlannerPage} />} />
-      <Route path="/log" component={() => <ProtectedRoute component={LogPage} />} />
-      <Route path="/history" component={() => <ProtectedRoute component={HistoryPage} />} />
-      <Route path="/profile" component={() => <ProtectedRoute component={ProfilePage} />} />
-    </Switch>
+    <>
+      <SplashScreen isVisible={showSplash} />
+      <Switch>
+        <Route path="/login" component={() => <PublicRoute component={LoginPage} />} />
+        <Route path="/" component={() => <ProtectedRoute component={DashboardPage} />} />
+        <Route path="/plan/:mealTypeId" component={() => <ProtectedRoute component={MealPlannerPage} />} />
+        <Route path="/log" component={() => <ProtectedRoute component={LogPage} />} />
+        <Route path="/history" component={() => <ProtectedRoute component={HistoryPage} />} />
+        <Route path="/profile" component={() => <ProtectedRoute component={ProfilePage} />} />
+      </Switch>
+    </>
   );
 }
 
@@ -77,7 +77,7 @@ export default function App() {
   return (
     <AuthProvider>
       <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
-        <Router />
+        <AppContent />
       </WouterRouter>
     </AuthProvider>
   );
