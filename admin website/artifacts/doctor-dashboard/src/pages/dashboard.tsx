@@ -139,7 +139,7 @@ export default function DashboardPage() {
     );
   }
 
-  const classicData = stats.classicDistribution;
+  const classicData = stats.classicDistribution ?? [];
   const totalClassic = classicData.reduce((s, p) => s + p.count, 0);
 
   return (
@@ -258,7 +258,7 @@ export default function DashboardPage() {
             <h2 className="font-bold text-slate-800 mb-4">Recent Activity</h2>
             {activityLoading ? (
               <div className="flex items-center justify-center py-8"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>
-            ) : !recentActivity || recentActivity.length === 0 ? (
+            ) : !Array.isArray(recentActivity) || recentActivity.length === 0 ? (
               <p className="text-sm text-slate-400 py-8 text-center">No recent activity</p>
             ) : (
               <ul className="flex flex-col gap-4">
@@ -376,7 +376,7 @@ export default function DashboardPage() {
           </div>
         )}
 
-        {printSections.has("activity") && recentActivity && recentActivity.length > 0 && (
+        {printSections.has("activity") && Array.isArray(recentActivity) && recentActivity.length > 0 && (
           <div>
             <h2 className="text-sm font-bold text-slate-800 mb-2">Recent Activity</h2>
             <table className="w-full text-xs border-collapse">
