@@ -336,6 +336,29 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
         </div>
       )}
 
+      {meal.foods.length > 0 && (
+        <div className="mt-3 border-t border-outline-variant/10 pt-3">
+          <div className="divide-y divide-outline-variant/10">
+            {meal.foods.map((food) => (
+              <div key={food.id} className="flex items-center gap-2.5 py-1.5 first:pt-0 last:pb-0">
+                {food.foodImage ? (
+                  <img
+                    src={food.foodImage}
+                    alt={food.foodName}
+                    className="w-8 h-8 rounded-lg object-cover flex-shrink-0"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center flex-shrink-0">
+                    <span className="material-symbols-outlined text-on-surface-variant text-sm">lunch_dining</span>
+                  </div>
+                )}
+                <span className="text-sm text-on-surface truncate">{food.foodName}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="mt-4 flex justify-end border-t border-outline-variant/10 pt-3 gap-2">
         <button
           onClick={onPlan}
