@@ -17,5 +17,7 @@ export interface UpdateFoodRequest {
   imageUrl?: string;
   description?: string;
   indicator?: UpdateFoodRequestIndicator;
+  servingSize?: number;
+  servingUnit?: string;
   isActive?: boolean;
 }

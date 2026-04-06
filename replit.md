@@ -68,5 +68,7 @@ All under `/api/parent/`:
 
 - Kid: Emma Johnson (KID001), Parent: Sarah Johnson
 - Token: `EMMA2024` (active, expires 2027)
-- 15 keto-friendly foods seeded
-- 4 meal types: Breakfast, Lunch, Dinner, Snack
+- 72 keto-friendly foods seeded (including 10 Beverage items)
+- Foods include `serving_size` and `serving_unit` columns (e.g., "100g", "1 cup", "2 tbsp")
+- Food categories: Carb, Fat, Protein, Calories, Beverage
+- 3 meal types: Breakfast, Lunch, Dinner

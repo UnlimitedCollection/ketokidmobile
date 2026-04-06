@@ -18,5 +18,7 @@ export interface Food {
   imageUrl?: string;
   description?: string;
   indicator?: FoodIndicator;
+  servingSize?: number;
+  servingUnit?: string;
   isActive: boolean;
 }

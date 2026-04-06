@@ -2610,6 +2610,12 @@ components:
         indicator:
           type: string
           enum: [vegi, fruit, non-vegi, recipe]
+        servingSize:
+          type: number
+          default: 1
+        servingUnit:
+          type: string
+          default: serve
         isActive:
           type: boolean
       required:
@@ -2644,6 +2650,12 @@ components:
         indicator:
           type: string
           enum: [vegi, fruit, non-vegi, recipe]
+        servingSize:
+          type: number
+          default: 1
+        servingUnit:
+          type: string
+          default: serve
       required:
         - name
         - category
@@ -2674,6 +2686,10 @@ components:
         indicator:
           type: string
           enum: [vegi, fruit, non-vegi, recipe]
+        servingSize:
+          type: number
+        servingUnit:
+          type: string
         isActive:
           type: boolean
 

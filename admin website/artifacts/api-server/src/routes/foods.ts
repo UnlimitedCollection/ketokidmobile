@@ -48,6 +48,8 @@ router.post("/", async (req, res) => {
         imageUrl: parsed.data.imageUrl ?? "",
         description: parsed.data.description ?? "",
         indicator: parsed.data.indicator ?? "vegi",
+        servingSize: parsed.data.servingSize ?? 1,
+        servingUnit: parsed.data.servingUnit ?? "serve",
       })
       .returning();
 

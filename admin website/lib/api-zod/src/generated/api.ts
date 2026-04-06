@@ -1399,6 +1399,9 @@ export const GetFoodsQueryParams = zod.object({
   category: zod.coerce.string().optional(),
 });
 
+export const getFoodsResponseServingSizeDefault = 1;
+export const getFoodsResponseServingUnitDefault = `serve`;
+
 export const GetFoodsResponseItem = zod.object({
   id: zod.number(),
   name: zod.string(),
@@ -1410,6 +1413,8 @@ export const GetFoodsResponseItem = zod.object({
   imageUrl: zod.string().optional(),
   description: zod.string().optional(),
   indicator: zod.enum(["vegi", "fruit", "non-vegi", "recipe"]).optional(),
+  servingSize: zod.number().default(getFoodsResponseServingSizeDefault),
+  servingUnit: zod.string().default(getFoodsResponseServingUnitDefault),
   isActive: zod.boolean(),
 });
 export const GetFoodsResponse = zod.array(GetFoodsResponseItem);
@@ -1417,6 +1422,9 @@ export const GetFoodsResponse = zod.array(GetFoodsResponseItem);
 /**
  * @summary Create a new food item
  */
+export const createFoodBodyServingSizeDefault = 1;
+export const createFoodBodyServingUnitDefault = `serve`;
+
 export const CreateFoodBody = zod.object({
   name: zod.string(),
   category: zod.string(),
@@ -1427,6 +1435,8 @@ export const CreateFoodBody = zod.object({
   imageUrl: zod.string().optional(),
   description: zod.string().optional(),
   indicator: zod.enum(["vegi", "fruit", "non-vegi", "recipe"]).optional(),
+  servingSize: zod.number().default(createFoodBodyServingSizeDefault),
+  servingUnit: zod.string().default(createFoodBodyServingUnitDefault),
 });
 
 /**
@@ -1571,6 +1581,9 @@ export const GetFoodParams = zod.object({
   foodId: zod.coerce.number(),
 });
 
+export const getFoodResponseServingSizeDefault = 1;
+export const getFoodResponseServingUnitDefault = `serve`;
+
 export const GetFoodResponse = zod.object({
   id: zod.number(),
   name: zod.string(),
@@ -1582,6 +1595,8 @@ export const GetFoodResponse = zod.object({
   imageUrl: zod.string().optional(),
   description: zod.string().optional(),
   indicator: zod.enum(["vegi", "fruit", "non-vegi", "recipe"]).optional(),
+  servingSize: zod.number().default(getFoodResponseServingSizeDefault),
+  servingUnit: zod.string().default(getFoodResponseServingUnitDefault),
   isActive: zod.boolean(),
 });
 
@@ -1602,8 +1617,13 @@ export const UpdateFoodBody = zod.object({
   imageUrl: zod.string().optional(),
   description: zod.string().optional(),
   indicator: zod.enum(["vegi", "fruit", "non-vegi", "recipe"]).optional(),
+  servingSize: zod.number().optional(),
+  servingUnit: zod.string().optional(),
   isActive: zod.boolean().optional(),
 });
+
+export const updateFoodResponseServingSizeDefault = 1;
+export const updateFoodResponseServingUnitDefault = `serve`;
 
 export const UpdateFoodResponse = zod.object({
   id: zod.number(),
@@ -1616,6 +1636,8 @@ export const UpdateFoodResponse = zod.object({
   imageUrl: zod.string().optional(),
   description: zod.string().optional(),
   indicator: zod.enum(["vegi", "fruit", "non-vegi", "recipe"]).optional(),
+  servingSize: zod.number().default(updateFoodResponseServingSizeDefault),
+  servingUnit: zod.string().default(updateFoodResponseServingUnitDefault),
   isActive: zod.boolean(),
 });
 

@@ -11,6 +11,8 @@ export const foodsTable = pgTable("foods", {
   imageUrl: text("image_url").default(""),
   description: text("description").default(""),
   indicator: varchar("indicator", { length: 50 }).default("vegi"),
+  servingSize: real("serving_size").notNull().default(1),
+  servingUnit: varchar("serving_unit", { length: 50 }).notNull().default("serve"),
   isActive: boolean("is_active").notNull().default(true),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),

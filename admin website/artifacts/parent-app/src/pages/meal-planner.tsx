@@ -182,7 +182,13 @@ export default function MealPlannerPage() {
                 </div>
                 <div className="flex-1 flex items-center justify-center">
                   <span className={`font-bold text-4xl ${isActive ? "text-white" : "text-on-surface"}`}>
-                    {kpi.key === "calories" ? "—" : "—"}
+                    {selectedIds.size > 0
+                      ? (() => {
+                          const selected = foods.filter((f) => selectedIds.has(f.id));
+                          const total = selected.reduce((sum, f) => sum + (f[kpi.key as keyof FoodItem] as number || 0), 0);
+                          return kpi.key === "calories" ? Math.round(total) : `${Math.round(total * 10) / 10}g`;
+                        })()
+                      : "—"}
                   </span>
                 </div>
               </button>
@@ -304,7 +310,7 @@ function FoodCard({ food, isSelected, isExpanded, onTap, onLongPressStart, onLon
         <div className="bg-secondary rounded-full px-4 py-2 flex flex-col items-center justify-center text-white min-w-[80px]">
           <span className="text-[8px] font-bold opacity-80 uppercase leading-none">QTY</span>
           <span className="text-xs font-black leading-tight whitespace-nowrap">
-            {food.quantity || "1 SERVE"}
+            {food.quantity || `${food.servingSize ?? 1} ${(food.servingUnit ?? "serve").toUpperCase()}`}
           </span>
         </div>
       </div>

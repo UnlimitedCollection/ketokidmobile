@@ -157,6 +157,8 @@ router.get("/dashboard", async (req: Request, res: Response) => {
             fat: foodsTable.fat,
             protein: foodsTable.protein,
             calories: foodsTable.calories,
+            servingSize: foodsTable.servingSize,
+            servingUnit: foodsTable.servingUnit,
           })
           .from(parentMealPlanFoodsTable)
           .innerJoin(foodsTable, eq(parentMealPlanFoodsTable.foodId, foodsTable.id))
@@ -165,7 +167,7 @@ router.get("/dashboard", async (req: Request, res: Response) => {
 
         foods = planFoods.map((f) => ({
           ...f,
-          quantity: "1 serve",
+          quantity: `${f.servingSize ?? 1} ${f.servingUnit ?? "serve"}`,
         }));
 
         if (plan.ateStatus === "yes") {
@@ -272,7 +274,9 @@ router.get("/foods", async (req: Request, res: Response) => {
         imageUrl: f.imageUrl || null,
         description: f.description || null,
         indicator: f.indicator || null,
-        quantity: "1 serve",
+        servingSize: f.servingSize ?? 1,
+        servingUnit: f.servingUnit ?? "serve",
+        quantity: `${f.servingSize ?? 1} ${f.servingUnit ?? "serve"}`,
       }))
     );
   } catch (err) {

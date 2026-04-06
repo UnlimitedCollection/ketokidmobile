@@ -520,6 +520,8 @@ export interface Food {
   imageUrl?: string;
   description?: string;
   indicator?: FoodIndicator;
+  servingSize?: number;
+  servingUnit?: string;
   isActive: boolean;
 }
 
@@ -543,6 +545,8 @@ export interface CreateFoodRequest {
   imageUrl?: string;
   description?: string;
   indicator?: CreateFoodRequestIndicator;
+  servingSize?: number;
+  servingUnit?: string;
 }
 
 export type UpdateFoodRequestIndicator =
@@ -565,6 +569,8 @@ export interface UpdateFoodRequest {
   imageUrl?: string;
   description?: string;
   indicator?: UpdateFoodRequestIndicator;
+  servingSize?: number;
+  servingUnit?: string;
   isActive?: boolean;
 }
 

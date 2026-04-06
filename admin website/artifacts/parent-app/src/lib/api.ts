@@ -99,6 +99,8 @@ export interface FoodItem {
   imageUrl: string | null;
   description: string | null;
   indicator: string | null;
+  servingSize: number;
+  servingUnit: string;
   quantity: string | null;
 }
 

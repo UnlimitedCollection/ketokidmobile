@@ -17,4 +17,6 @@ export interface CreateFoodRequest {
   imageUrl?: string;
   description?: string;
   indicator?: CreateFoodRequestIndicator;
+  servingSize?: number;
+  servingUnit?: string;
 }
