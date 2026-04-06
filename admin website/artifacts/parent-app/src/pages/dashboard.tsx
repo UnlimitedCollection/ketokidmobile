@@ -317,16 +317,16 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
           <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">
             Portion Consumed
           </p>
-          <div className="flex gap-2">
+          <div className="flex justify-between">
             {[0, 25, 50, 75, 100].map((pct) => (
               <button
                 key={pct}
                 onClick={() => handlePortion(pct)}
                 disabled={saving}
-                className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${
+                className={`w-12 h-12 rounded-full text-xs font-bold transition-all flex items-center justify-center ${
                   meal.portionPercent === pct
                     ? "bg-primary text-white shadow-md shadow-primary/20"
-                    : "bg-white border border-outline-variant/20 text-on-surface"
+                    : "bg-white border border-gray-300 text-on-surface"
                 }`}
               >
                 {pct}%
