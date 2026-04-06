@@ -200,6 +200,7 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
   const [copyOpen, setCopyOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [confirmNoOpen, setConfirmNoOpen] = useState(false);
+  const [pendingPortion, setPendingPortion] = useState<number | null>(null);
 
   const mealKey = meal.mealTypeName.toLowerCase();
   const icon = MEAL_ICONS[mealKey] || "restaurant";
@@ -321,7 +322,7 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
             {[0, 25, 50, 75, 100].map((pct) => (
               <button
                 key={pct}
-                onClick={() => handlePortion(pct)}
+                onClick={() => setPendingPortion(pct)}
                 disabled={saving}
                 className={`w-12 h-12 rounded-full text-xs font-bold transition-all flex items-center justify-center ${
                   meal.portionPercent === pct
@@ -417,6 +418,41 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
                 onClick={() => {
                   setConfirmNoOpen(false);
                   handleEat("no");
+                }}
+                disabled={saving}
+                className="flex-1 py-3 rounded-full text-sm font-bold bg-error text-white hover:bg-error/90 transition-colors shadow-md shadow-error/20"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {pendingPortion !== null && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4" onClick={() => setPendingPortion(null)}>
+          <div className="bg-surface rounded-3xl shadow-2xl p-6 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-error/10 rounded-full flex items-center justify-center">
+                <span className="material-symbols-outlined text-error">warning</span>
+              </div>
+              <h3 className="text-lg font-bold text-on-surface">Confirm Portion?</h3>
+            </div>
+            <p className="text-sm text-on-surface-variant mb-6">
+              You can't undo this again. The meal will be marked as {pendingPortion}% consumed.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setPendingPortion(null)}
+                className="flex-1 py-3 rounded-full text-sm font-bold border border-outline-variant/30 text-on-surface hover:bg-surface-container transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  const pct = pendingPortion;
+                  setPendingPortion(null);
+                  handlePortion(pct);
                 }}
                 disabled={saving}
                 className="flex-1 py-3 rounded-full text-sm font-bold bg-error text-white hover:bg-error/90 transition-colors shadow-md shadow-error/20"
