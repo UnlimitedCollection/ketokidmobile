@@ -201,7 +201,12 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
   const [saving, setSaving] = useState(false);
   const [confirmNoOpen, setConfirmNoOpen] = useState(false);
   const [pendingPortion, setPendingPortion] = useState<number | null>(null);
+  const [successToast, setSuccessToast] = useState<string | null>(null);
+  const [optimisticStatus, setOptimisticStatus] = useState<string | null>(null);
+  const [optimisticPortion, setOptimisticPortion] = useState<number | null>(null);
 
+  const displayStatus = optimisticStatus || meal.status;
+  const displayPortion = optimisticPortion ?? meal.portionPercent ?? 0;
   const mealKey = meal.mealTypeName.toLowerCase();
   const icon = MEAL_ICONS[mealKey] || "restaurant";
   const colorClass = MEAL_COLORS[mealKey] || "text-primary";
@@ -213,21 +218,31 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
       if (ate === "yes") {
         setEatExpanded(true);
       } else {
-        await api.updateEatStatus(meal.mealPlanId, "no");
+        setOptimisticStatus("not_involved");
         setEatExpanded(false);
+        await api.updateEatStatus(meal.mealPlanId, "no");
         onRefresh();
       }
-    } catch {}
+    } catch (e) {
+      setOptimisticStatus(null);
+    }
     setSaving(false);
   };
 
   const handlePortion = async (pct: number) => {
     if (!meal.mealPlanId) return;
     setSaving(true);
+    setOptimisticStatus("consumed");
+    setOptimisticPortion(pct);
     try {
       await api.updateEatStatus(meal.mealPlanId, "yes", pct);
+      setSuccessToast("Meal logged successfully");
+      setTimeout(() => setSuccessToast(null), 2500);
       onRefresh();
-    } catch {}
+    } catch (e) {
+      setOptimisticStatus(null);
+      setOptimisticPortion(null);
+    }
     setSaving(false);
   };
 
@@ -273,15 +288,15 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
           <div>
             <h4 className="font-bold text-lg leading-none">{meal.mealTypeName}</h4>
             <p className="text-xs text-on-surface-variant mt-1">
-              {meal.status === "not_involved"
+              {displayStatus === "not_involved"
                 ? "Not eaten today"
-                : meal.status === "consumed"
-                ? `Consumed ${meal.portionPercent ?? 0}%`
+                : displayStatus === "consumed"
+                ? `Consumed ${displayPortion}%`
                 : "Did the child eat?"}
             </p>
           </div>
         </div>
-        {meal.status === "planned" && (
+        {displayStatus === "planned" && (
           <div className="flex bg-surface-container-high p-1 rounded-full w-28 h-10">
             <button
               onClick={() => handleEat("yes")}
@@ -301,19 +316,19 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
             </button>
           </div>
         )}
-        {meal.status === "consumed" && (
+        {displayStatus === "consumed" && (
           <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">
             ✓ Eaten
           </div>
         )}
-        {meal.status === "not_involved" && (
+        {displayStatus === "not_involved" && (
           <div className="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold">
             Skipped
           </div>
         )}
       </div>
 
-      {eatExpanded && meal.status === "planned" && (
+      {eatExpanded && displayStatus === "planned" && (
         <div className="border-t border-outline-variant/20 pt-4 mt-4">
           <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">
             Portion Consumed
@@ -357,13 +372,15 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
       )}
 
       <div className="mt-4 flex justify-end border-t border-outline-variant/10 pt-3 gap-2">
-        <button
-          onClick={onPlan}
-          className="flex items-center gap-1.5 text-primary text-xs font-bold hover:bg-primary/5 px-3 py-1.5 rounded-full transition-colors"
-        >
-          <span className="material-symbols-outlined text-sm">edit</span>
-          Edit
-        </button>
+        {displayStatus === "planned" && (
+          <button
+            onClick={onPlan}
+            className="flex items-center gap-1.5 text-primary text-xs font-bold hover:bg-primary/5 px-3 py-1.5 rounded-full transition-colors"
+          >
+            <span className="material-symbols-outlined text-sm">edit</span>
+            Edit
+          </button>
+        )}
         <div className="relative">
           <button
             onClick={() => setCopyOpen(!copyOpen)}
@@ -456,6 +473,15 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
                 Confirm
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {successToast && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+          <div className="bg-primary text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2 text-sm font-bold">
+            <span className="material-symbols-outlined text-base">check_circle</span>
+            {successToast}
           </div>
         </div>
       )}
