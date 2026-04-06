@@ -6,6 +6,7 @@ import LoginPage from "@/pages/login";
 import DashboardPage from "@/pages/dashboard";
 import MealPlannerPage from "@/pages/meal-planner";
 import HistoryPage from "@/pages/history";
+import LogPage from "@/pages/log";
 import ProfilePage from "@/pages/profile";
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
@@ -65,6 +66,7 @@ function Router() {
       <Route path="/login" component={() => <PublicRoute component={LoginPage} />} />
       <Route path="/" component={() => <ProtectedRoute component={DashboardPage} />} />
       <Route path="/plan/:mealTypeId" component={() => <ProtectedRoute component={MealPlannerPage} />} />
+      <Route path="/log" component={() => <ProtectedRoute component={LogPage} />} />
       <Route path="/history" component={() => <ProtectedRoute component={HistoryPage} />} />
       <Route path="/profile" component={() => <ProtectedRoute component={ProfilePage} />} />
     </Switch>

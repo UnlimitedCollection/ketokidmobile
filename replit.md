@@ -37,6 +37,7 @@ Mobile App/             # HTML mockups for reference
 - **Meal Planner**: KPI filter cards, food selection with long-press/tap, save meal plans
 - **Consumption Tracking**: Did child eat? Yes/No, portion percent (0/25/50/75/100%)
 - **Copy/Edit Meals**: Copy meals between meal types, edit existing plans
+- **Log Page**: Compliance stats (days tracked, full compliance, partial, missed), heatmap calendar (last 60 days), weight tracker line chart
 - **History**: Date-wise meal history with daily nutrition summaries
 - **Profile**: Child info, nutrition targets, parent info, logout
 
@@ -51,6 +52,8 @@ All under `/api/parent/`:
 - `PUT /meal-plans/:id` — Update meal plan foods
 - `POST /meal-plans/copy` — Copy meal between meal types
 - `PUT /meal-plans/:id/eat-status` — Track consumption
+- `GET /log` — Compliance summary stats + daily breakdown (last 60 days)
+- `GET /weight-history` — Child's weight records for chart display
 - `GET /history?days=N` — Past meal history
 
 ## Database Tables (Parent-specific)

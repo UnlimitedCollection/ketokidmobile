@@ -8,6 +8,7 @@ import {
   mealTypesTable,
   parentMealPlansTable,
   parentMealPlanFoodsTable,
+  weightRecordsTable,
 } from "@workspace/db";
 import { eq, and, desc, asc, sql } from "drizzle-orm";
 
@@ -630,6 +631,115 @@ router.get("/history", async (req: Request, res: Response) => {
     res.json(result);
   } catch (err) {
     req.log?.error({ err }, "History error");
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.get("/log", async (req: Request, res: Response) => {
+  try {
+    const kidId = req.session.parentKidId!;
+
+    const today = new Date();
+    const startDate = new Date();
+    startDate.setDate(today.getDate() - 59);
+    const startDateStr = startDate.toISOString().split("T")[0];
+
+    const plans = await db
+      .select()
+      .from(parentMealPlansTable)
+      .where(and(
+        eq(parentMealPlansTable.kidId, kidId),
+        sql`${parentMealPlansTable.date} >= ${startDateStr}`
+      ))
+      .orderBy(asc(parentMealPlansTable.date));
+
+    const dayMap = new Map<string, typeof plans>();
+    for (const p of plans) {
+      const d = p.date;
+      if (!dayMap.has(d)) dayMap.set(d, []);
+      dayMap.get(d)!.push(p);
+    }
+
+    let daysTracked = 0;
+    let fullCompliance = 0;
+    let partialDays = 0;
+    let missedDays = 0;
+    const dailyBreakdown: { date: string; status: "full" | "partial" | "missed" | "no-data" }[] = [];
+
+    const cursor = new Date(startDate);
+    while (cursor <= today) {
+      const dateStr = cursor.toISOString().split("T")[0];
+      const dayPlans = dayMap.get(dateStr);
+
+      if (!dayPlans || dayPlans.length === 0) {
+        dailyBreakdown.push({ date: dateStr, status: "no-data" });
+        cursor.setDate(cursor.getDate() + 1);
+        continue;
+      }
+
+      const hasAnyEaten = dayPlans.some(p => p.ateStatus === "yes");
+      const hasAnyDecision = dayPlans.some(p => p.ateStatus === "yes" || p.ateStatus === "no");
+
+      if (!hasAnyDecision) {
+        dailyBreakdown.push({ date: dateStr, status: "no-data" });
+        cursor.setDate(cursor.getDate() + 1);
+        continue;
+      }
+
+      daysTracked++;
+
+      const allConsumedFull = dayPlans.every(p => p.ateStatus === "yes" && (p.portionPercent ?? 100) === 100);
+      const allMissed = dayPlans.every(p => p.ateStatus === "no" || p.ateStatus === "unknown");
+
+      let status: "full" | "partial" | "missed" | "no-data";
+      if (allConsumedFull) {
+        status = "full";
+        fullCompliance++;
+      } else if (!hasAnyEaten && allMissed) {
+        status = "missed";
+        missedDays++;
+      } else {
+        status = "partial";
+        partialDays++;
+      }
+
+      dailyBreakdown.push({ date: dateStr, status });
+      cursor.setDate(cursor.getDate() + 1);
+    }
+
+    res.json({
+      summary: {
+        daysTracked,
+        fullCompliance,
+        partialDays,
+        missedDays,
+      },
+      dailyBreakdown,
+    });
+  } catch (err) {
+    req.log?.error({ err }, "Log endpoint error");
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.get("/weight-history", async (req: Request, res: Response) => {
+  try {
+    const kidId = req.session.parentKidId!;
+
+    const records = await db
+      .select({
+        id: weightRecordsTable.id,
+        weight: weightRecordsTable.weight,
+        date: weightRecordsTable.date,
+        note: weightRecordsTable.note,
+      })
+      .from(weightRecordsTable)
+      .where(eq(weightRecordsTable.kidId, kidId))
+      .orderBy(asc(weightRecordsTable.date));
+
+    res.json(records);
+  } catch (err) {
+    req.log?.error({ err }, "Weight history error");
     res.status(500).json({ message: "Internal server error" });
   }
 });

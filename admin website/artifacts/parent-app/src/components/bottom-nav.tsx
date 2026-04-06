@@ -2,7 +2,7 @@ import { useLocation } from "wouter";
 
 const NAV_ITEMS = [
   { path: "/", icon: "home_health", activeIcon: "home_health", label: "Home" },
-  { path: "/plan", icon: "add_circle", activeIcon: "add_circle", label: "Log" },
+  { path: "/log", icon: "insert_chart", activeIcon: "insert_chart", label: "Log" },
   { path: "/history", icon: "history", activeIcon: "history", label: "History" },
   { path: "/profile", icon: "person", activeIcon: "person", label: "Profile" },
 ];

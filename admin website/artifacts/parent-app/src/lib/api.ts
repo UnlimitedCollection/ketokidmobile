@@ -104,6 +104,30 @@ export interface FoodItem {
   quantity: string | null;
 }
 
+export interface LogSummary {
+  daysTracked: number;
+  fullCompliance: number;
+  partialDays: number;
+  missedDays: number;
+}
+
+export interface DailyCompliance {
+  date: string;
+  status: "full" | "partial" | "missed" | "no-data";
+}
+
+export interface LogData {
+  summary: LogSummary;
+  dailyBreakdown: DailyCompliance[];
+}
+
+export interface WeightRecord {
+  id: number;
+  weight: number;
+  date: string;
+  note: string | null;
+}
+
 export interface HistoryDay {
   date: string;
   meals: TodayMeal[];
@@ -161,4 +185,10 @@ export const api = {
 
   getHistory: (days?: number) =>
     apiFetch<HistoryDay[]>(`/history?days=${days || 7}`),
+
+  getLog: () =>
+    apiFetch<LogData>("/log"),
+
+  getWeightHistory: () =>
+    apiFetch<WeightRecord[]>("/weight-history"),
 };
