@@ -308,7 +308,7 @@ function FoodCard({ food, isSelected, isExpanded, onTap, onLongPressStart, onLon
           </span>
         </div>
       </div>
-      {!isSelected && (
+      {isExpanded && !isSelected && (
         <div className="px-6 pb-4">
           <button
             onClick={(e) => { e.stopPropagation(); onSelect(); }}
