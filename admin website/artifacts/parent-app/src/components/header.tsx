@@ -1,7 +1,29 @@
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
+import { api, type DashboardData } from "@/lib/api";
+import { NotificationsPanel, useNotificationCount } from "@/components/notifications-panel";
 
 export function AppHeader() {
   const { child } = useAuth();
+  const [, setLocation] = useLocation();
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
+  const bellRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    api.getDashboard().then(setDashboardData).catch(() => {});
+  }, []);
+
+  const notificationCount = useNotificationCount(dashboardData);
+
+  const toggleNotifications = useCallback(() => {
+    setShowNotifications((prev) => !prev);
+  }, []);
+
+  const closeNotifications = useCallback(() => {
+    setShowNotifications(false);
+  }, []);
 
   return (
     <header className="bg-white/90 backdrop-blur-xl sticky top-0 z-50 shadow-sm shadow-green-900/5 flex justify-between items-center px-6 h-16 w-full">
@@ -11,13 +33,26 @@ export function AppHeader() {
         </h1>
       </div>
       <div className="flex items-center gap-4">
-        <button className="text-slate-500 hover:bg-green-50 transition-colors active:scale-95 duration-200 p-2 rounded-full relative">
+        <button
+          ref={bellRef}
+          onClick={toggleNotifications}
+          className="text-slate-500 hover:bg-green-50 transition-colors active:scale-95 duration-200 p-2 rounded-full relative"
+        >
           <span className="material-symbols-outlined">notifications</span>
+          {notificationCount > 0 && (
+            <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white" />
+          )}
         </button>
-        <div className="w-10 h-10 rounded-full overflow-hidden bg-primary/10 flex items-center justify-center text-primary font-bold">
+        <button
+          onClick={() => setLocation("/profile")}
+          className="w-10 h-10 rounded-full overflow-hidden bg-primary/10 flex items-center justify-center text-primary font-bold hover:ring-2 hover:ring-primary/30 active:scale-95 transition-all duration-200 cursor-pointer"
+        >
           {child?.name?.charAt(0) || "P"}
-        </div>
+        </button>
       </div>
+      {showNotifications && (
+        <NotificationsPanel data={dashboardData} onClose={closeNotifications} excludeRef={bellRef} />
+      )}
     </header>
   );
 }
