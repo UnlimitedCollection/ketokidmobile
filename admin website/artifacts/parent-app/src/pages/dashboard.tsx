@@ -199,6 +199,7 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
   const [eatExpanded, setEatExpanded] = useState(meal.ateStatus === "yes");
   const [copyOpen, setCopyOpen] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [confirmNoOpen, setConfirmNoOpen] = useState(false);
 
   const mealKey = meal.mealTypeName.toLowerCase();
   const icon = MEAL_ICONS[mealKey] || "restaurant";
@@ -290,7 +291,7 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
               Yes
             </button>
             <button
-              onClick={() => handleEat("no")}
+              onClick={() => setConfirmNoOpen(true)}
               className={`flex-1 text-sm font-bold rounded-full transition-all ${
                 meal.ateStatus === "no" ? "bg-white text-error shadow-sm" : "text-on-surface-variant"
               }`}
@@ -369,6 +370,40 @@ function MealCard({ meal, allMeals, onRefresh, onPlan }: {
           )}
         </div>
       </div>
+
+      {confirmNoOpen && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4" onClick={() => setConfirmNoOpen(false)}>
+          <div className="bg-surface rounded-3xl shadow-2xl p-6 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-error/10 rounded-full flex items-center justify-center">
+                <span className="material-symbols-outlined text-error">warning</span>
+              </div>
+              <h3 className="text-lg font-bold text-on-surface">Mark as Not Eaten?</h3>
+            </div>
+            <p className="text-sm text-on-surface-variant mb-6">
+              This action cannot be reversed. The meal will be permanently marked as not eaten.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setConfirmNoOpen(false)}
+                className="flex-1 py-3 rounded-full text-sm font-bold border border-outline-variant/30 text-on-surface hover:bg-surface-container transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setConfirmNoOpen(false);
+                  handleEat("no");
+                }}
+                disabled={saving}
+                className="flex-1 py-3 rounded-full text-sm font-bold bg-error text-white hover:bg-error/90 transition-colors shadow-md shadow-error/20"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
