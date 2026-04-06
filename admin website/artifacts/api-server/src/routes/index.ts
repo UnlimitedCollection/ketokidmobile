@@ -12,6 +12,7 @@ import recipesRouter from "./recipes";
 import mealTypesRouter from "./meal-types";
 import sideEffectsRouter from "./side-effects";
 import usersRouter from "./users";
+import parentRouter from "./parent";
 import { requireAuth } from "../middleware/requireAuth";
 import { requireAdmin } from "../middleware/requireAdmin";
 import { restrictWriteForModerator } from "../middleware/restrictWriteForModerator";
@@ -19,6 +20,7 @@ import { restrictWriteForModerator } from "../middleware/restrictWriteForModerat
 const router: IRouter = Router();
 
 router.use(healthRouter);
+router.use("/parent", parentRouter);
 router.use("/auth", authRouter);
 
 router.use(requireAuth);

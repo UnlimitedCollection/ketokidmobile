@@ -10,6 +10,8 @@ declare module "express-session" {
     doctorId?: number;
     doctorName?: string;
     doctorRole?: string;
+    parentKidId?: number;
+    parentKidName?: string;
   }
 }
 
