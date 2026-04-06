@@ -308,15 +308,6 @@ function FoodCard({ food, isSelected, isExpanded, onTap, onLongPressStart, onLon
           </span>
         </div>
       </div>
-      {isExpanded && (
-        <div className="px-6 pb-6 grid grid-cols-4 gap-3">
-          <NutritionPill label="Carbs" value={`${food.carbs}g`} />
-          <NutritionPill label="Fat" value={`${food.fat}g`} />
-          <NutritionPill label="Protein" value={`${food.protein}g`} />
-          <NutritionPill label="Cal" value={`${food.calories}`} />
-        </div>
-      )}
-
       {!isSelected && (
         <div className="px-6 pb-4">
           <button
@@ -327,15 +318,6 @@ function FoodCard({ food, isSelected, isExpanded, onTap, onLongPressStart, onLon
           </button>
         </div>
       )}
-    </div>
-  );
-}
-
-function NutritionPill({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="bg-surface-container-low rounded-xl p-2 text-center">
-      <p className="text-[10px] font-bold text-on-surface-variant uppercase">{label}</p>
-      <p className="text-sm font-bold text-on-surface">{value}</p>
     </div>
   );
 }
