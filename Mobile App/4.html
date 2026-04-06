@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KetoKid Care Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#ffdbca",
+                        "outline-variant": "#bccbb9",
+                        "on-tertiary-container": "#6d2d00",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#006e2f",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-tertiary-fixed": "#341100",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "surface-container": "#edeef0",
+                        "on-secondary-container": "#fefcff",
+                        "surface": "#f8f9fb",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#002109",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-secondary-fixed-variant": "#004395",
+                        "secondary": "#0058be",
+                        "primary": "#006e2f",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#6bff8f",
+                        "surface-container-low": "#f3f4f6",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-container": "#ff8e4d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#005321",
+                        "inverse-on-surface": "#f0f1f3",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-bright": "#f8f9fb",
+                        "surface-variant": "#e1e2e4",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#004b1e",
+                        "primary-container": "#22c55e",
+                        "surface-container-high": "#e7e8ea",
+                        "surface-dim": "#d9dadc",
+                        "secondary-container": "#2170e4",
+                        "tertiary": "#9d4300",
+                        "on-surface-variant": "#3d4a3d",
+                        "inverse-surface": "#2e3132",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1e",
+                        "background": "#f8f9fb",
+                        "inverse-primary": "#4ae176",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "error-container": "#ffdad6",
+                        "outline": "#6d7b6c"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm shadow-green-900/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<h1 class="font-['Inter'] font-bold tracking-tight text-slate-900 dark:text-slate-50 text-xl">KetoKid Care</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 dark:text-slate-400 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors active:scale-95 duration-200 p-2 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User profile avatar smiling headshot" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8U9vfV7Y0RGPxMjwnRR4FMP0r3cPWsUlZf0wjDythK7PGtaCt71VcrtvpJBzECQAbKeT1lMnjDSA4wE0sMCXfw-kLoZzkcXRPl36hwMpivjBsROVECq-jn5U_2FlNxZOpbqTTUNaowDd5A3UQfZYB5OCJbhaARrgTuM5J0iiD1g1HIOyXl1Txj9CqMQ38EhSg47e9-bPZ9U77-bFGJt6EZjVqHavClrJahnOaGwmIN4lA_47mRh61Fx33Tp9ImXRDXNIqGcsj1wnL"/>
+</div>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-6 py-8">
+<!-- Greeting -->
+<section class="mb-10">
+<h2 class="text-[2rem] font-bold tracking-tight leading-none mb-1">Good Morning, Nimal</h2>
+<p class="text-on-surface-variant font-medium">Today's Nutrition Overview</p>
+</section>
+<!-- Hero Card: Overall Progress -->
+<section class="mb-8">
+<div class="bg-gradient-to-br from-primary to-primary-container p-8 rounded-lg shadow-lg text-on-primary flex items-center justify-between relative overflow-hidden">
+<div class="z-10">
+<h3 class="text-label-md uppercase tracking-widest opacity-90 mb-2">Overall Daily Progress</h3>
+<p class="text-[2.5rem] font-bold leading-tight">Great job!<br/><span class="opacity-80 font-medium text-2xl">On track today</span></p>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<!-- Health Gauge Circular Progress -->
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle cx="64" cy="64" fill="none" r="56" stroke="rgba(255,255,255,0.2)" stroke-width="12"></circle>
+<circle class="text-white" cx="64" cy="64" fill="none" r="56" stroke="currentColor" stroke-dasharray="351.85" stroke-dashoffset="87.96" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<span class="absolute text-2xl font-bold">75%</span>
+</div>
+<span class="text-xs mt-2 uppercase tracking-tighter font-semibold">Done</span>
+</div>
+<!-- Decorative background elements -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+</section>
+<!-- KPI Grid -->
+<section class="grid grid-cols-2 gap-4 mb-10">
+<!-- Carbs -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">grain</span>
+</div>
+<span class="text-xs font-bold text-secondary">CARBS</span>
+</div>
+<p class="text-2xl font-bold">45<span class="text-sm font-medium text-on-surface-variant">/60g</span></p>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[75%]"></div>
+</div>
+</div>
+<!-- Fat -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<span class="text-xs font-bold text-primary">FAT</span>
+</div>
+<p class="text-2xl font-bold">70<span class="text-sm font-medium text-on-surface-variant">/80g</span></p>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[87%]"></div>
+</div>
+</div>
+<!-- Protein -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<span class="text-xs font-bold text-tertiary">PROTEIN</span>
+</div>
+<p class="text-2xl font-bold">30<span class="text-sm font-medium text-on-surface-variant">/50g</span></p>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full w-[60%]"></div>
+</div>
+</div>
+<!-- Calories -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-on-surface/5 flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<span class="text-xs font-bold text-on-surface">CALORIES</span>
+</div>
+<p class="text-2xl font-bold">900<span class="text-sm font-medium text-on-surface-variant"> kcal</span></p>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-on-surface h-full rounded-full w-[45%] opacity-20"></div>
+</div>
+</div>
+</section>
+<!-- Meal Tasks Section -->
+<section class="mb-10">
+<h3 class="text-xl font-bold mb-6">Today's Meal Tasks</h3>
+<div class="space-y-4">
+<!-- Breakfast Card (Expanded Interaction) -->
+<div class="p-5 rounded-lg transition-all bg-surface-container">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-primary">
+<span class="material-symbols-outlined">light_mode</span>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-none">Breakfast</h4>
+<p class="text-xs text-on-surface-variant mt-1">Did the child eat Breakfast?</p>
+</div>
+</div>
+<!-- Yes/No Toggle -->
+<div class="flex bg-surface-container-high p-1 rounded-full w-28 h-10"><button class="flex-1 text-on-surface-variant font-medium text-sm">Yes</button>
+<button class="flex-1 bg-white text-primary font-bold text-sm rounded-full shadow-sm">No</button></div>
+</div>
+<div class="border-t border-outline-variant/20 pt-4 mt-4 hidden">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">Portion Consumed</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-white border border-outline-variant/20 text-sm font-bold text-on-surface">0%</button>
+<button class="flex-1 py-2 rounded-lg bg-white border border-outline-variant/20 text-sm font-bold text-on-surface">25%</button>
+<button class="flex-1 py-2 rounded-lg bg-white border border-outline-variant/20 text-sm font-bold text-on-surface">50%</button>
+<button class="flex-1 py-2 rounded-lg bg-primary text-white text-sm font-bold shadow-md shadow-primary/20">75%</button>
+<button class="flex-1 py-2 rounded-lg bg-white border border-outline-variant/20 text-sm font-bold text-on-surface">100%</button>
+</div>
+</div>
+<div class="flex justify-end"><button class="flex items-center gap-1.5 text-primary text-xs font-bold hover:bg-primary/5 px-3 py-1.5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+                        Edit
+                    </button>
+<button class="flex items-center gap-1.5 text-primary text-xs font-bold hover:bg-primary/5 px-3 py-1.5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                        Copy to Lunch
+                    </button></div>
+</div>
+<!-- Lunch Card -->
+<div class="p-5 rounded-lg transition-all group bg-surface-container">
+<div class="flex items-center justify-between"><div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-secondary">
+<span class="material-symbols-outlined">sunny</span>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-none">Lunch</h4>
+<p class="text-xs text-on-surface-variant mt-1">Plan and log lunch</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors">chevron_right</span></div>
+<div class="mt-4 flex justify-end border-t border-outline-variant/10 pt-3"><button class="flex items-center gap-1.5 text-primary text-xs font-bold hover:bg-primary/5 px-3 py-1.5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+                        Edit
+                    </button>
+<button class="flex items-center gap-1.5 text-primary text-xs font-bold hover:bg-primary/5 px-3 py-1.5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                        Copy to Lunch
+                    </button></div>
+</div>
+<!-- Dinner Card -->
+<button class="w-full text-left p-5 rounded-lg flex items-center justify-between transition-all hover:bg-surface-container active:scale-[0.98] group bg-surface-container"><div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-tertiary">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-none">Dinner</h4>
+<p class="text-xs text-on-surface-variant mt-1">Plan and log dinner</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary transition-colors">chevron_right</span></button>
+</div>
+</section>
+<!-- Actions -->
+<div class="flex flex-col gap-4 mb-16">
+<button class="bg-transparent text-primary py-4 rounded-full font-bold text-lg hover:bg-primary/5 active:scale-95 transition-all">
+            View History
+        </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-[2.5rem] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_-4px_40px_rgba(0,110,47,0.06)] flex justify-around items-center px-4 pb-6 pt-3">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200 rounded-full px-5 py-2 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home_health</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider mt-1">Home</span>
+</a>
+<!-- Log -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-600 dark:hover:text-green-300 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider mt-1">Log</span>
+</a>
+<!-- Child -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-600 dark:hover:text-green-300 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">child_care</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider mt-1">Child</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-600 dark:hover:text-green-300 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

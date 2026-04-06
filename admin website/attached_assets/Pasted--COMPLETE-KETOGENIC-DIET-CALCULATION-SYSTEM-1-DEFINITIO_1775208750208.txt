@@ -1,0 +1,159 @@
+# 🧠 COMPLETE KETOGENIC DIET CALCULATION SYSTEM
+
+---
+
+# 🔹 1. DEFINITIONS
+
+W = Weight (kg)  
+R = Keto Ratio (Fat : (Protein + Carbs))  
+- Example: 2:1 → R = 2  
+- Example: 3.5:1 → R = 3.5  
+
+---
+
+# 🔹 2. ENERGY VALUES
+
+- Fat = 9 kcal/g  
+- Protein = 4 kcal/g  
+- Carbohydrate = 4 kcal/g  
+
+---
+
+# 🔹 3. CALORIE CALCULATION (PEDIATRIC)
+
+For children:
+
+- First 10 kg → 110 kcal/kg  
+- Next 10 kg → 70 kcal/kg  
+- Remaining → 30 kcal/kg  
+
+---
+
+## ✅ Formula
+
+If W ≤ 10:
+Calories = 110 × W  
+
+If 10 < W ≤ 20:
+Calories = (10 × 110) + ((W - 10) × 70)
+
+If W > 20:
+Calories = (10 × 110) + (10 × 70) + ((W - 20) × 30)
+
+---
+
+# 🔹 4. CORE KETO FORMULA
+
+Energy per unit:
+Energy_unit = (9 × R) + 4  
+
+Total units:
+Units = Calories / (9R + 4)
+
+---
+
+# 🔹 5. MACRONUTRIENTS
+
+Protein:
+Protein (g) = W  
+
+Carbohydrates:
+Carbs (g) = Units − W  
+
+Fat:
+Fat (g) = Units × R  
+
+---
+
+# 🔥 6. FINAL UNIVERSAL FORMULAS
+
+Calories = based on weight rule  
+
+Units = Calories / (9R + 4)  
+
+Protein = W  
+
+Carbs = (Calories / (9R + 4)) − W  
+
+Fat = (Calories × R) / (9R + 4)
+
+---
+
+# 🔹 7. VERIFICATION FORMULA
+
+Calories = (Fat × 9) + (Protein × 4) + (Carbs × 4)
+
+---
+
+# 🔹 8. EXAMPLE
+
+W = 6 kg  
+R = 3  
+
+Calories = 6 × 110 = 660  
+
+Units = 660 / (27 + 4) = 660 / 31 ≈ 21.3  
+
+Protein = 6 g  
+
+Carbs = 21.3 − 6 = 15.3 g  
+
+Fat = 21.3 × 3 ≈ 64 g  
+
+---
+
+# 🔹 9. NORMAL RANGE (REFERENCE)
+
+## 👶 Newborn
+- Calories: 100–120 kcal/kg  
+- Protein: 1.5–2.5 g/kg  
+- Fat: 4–6 g/kg  
+- Carbs: 10–14 g/kg  
+
+## 🧒 Child (~5 yrs)
+- Calories: 90–100 kcal/kg  
+- Protein: 1–1.2 g/kg  
+- Fat: 3–4 g/kg  
+- Carbs: 8–12 g/kg  
+
+---
+
+# 🔹 10. UI DESIGN LIMITS (RECOMMENDED)
+
+## Normal Diet
+- Calories: 0 – 2200 kcal  
+- Fat: 0 – 100 g  
+- Protein: 0 – 50 g  
+- Carbs: 0 – 300 g  
+
+## Keto Mode
+- Calories: 0 – 2200 kcal  
+- Fat: 0 – 200 g  
+- Protein: 0 – 50 g  
+- Carbs: 0 – 80 g  
+
+---
+
+# 🔹 11. KEY RULES
+
+- As R ↑ → Fat ↑  
+- Carbs ↓  
+- Protein = constant (1 g/kg)  
+- Calories depend on weight  
+
+---
+
+# 🎯 FINAL SUMMARY
+
+Input:
+- Weight (W)
+- Ratio (R)
+
+Output:
+- Calories
+- Fat
+- Protein
+- Carbohydrates
+
+👉 Works for ALL ratios:
+2:1, 2.5:1, 3:1, 3.5:1, 4:1

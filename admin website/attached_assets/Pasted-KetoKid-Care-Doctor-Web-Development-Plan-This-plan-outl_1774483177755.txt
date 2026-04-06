@@ -1,0 +1,48 @@
+KetoKid Care: Doctor Web Development Plan
+This plan outlines the core features and data architecture for the Doctor-Side Webview of the KetoKid Care application. The design follows the "Empathetic Guardian" philosophy, balancing clinical precision with a supportive, high-end wellness aesthetic.
+
+Core Features
+1. Unified Patient Dashboard
+A high-level view for clinicians to monitor their entire roster of pediatric patients at a glance.
+
+Patient Cards: Displays name, current keto status (e.g., "In Ketosis", "Needs Review"), and compliance score for the last 24 hours.
+Urgent Alerts: Floating notifications for patients who have dropped out of ketosis or missed multiple logs.
+Global Search: Quick access to any patient's detailed records.
+2. Clinical Analytics & Monitoring
+Deep dive into a single patient's metabolic and nutritional data.
+
+Metabolic Trends: Interactive charts showing Blood Ketones (BHB), Glucose, and Weight over time.
+Nutrient Breakdown: Comparison of "Actual Intake" vs. "Prescribed Targets" for Carbs, Fat, and Protein.
+Compliance Heatmap: A calendar view showing days meeting 100% compliance vs. partial compliance.
+3. Prescriptive Diet Management
+Tools for doctors to adjust the therapeutic diet protocol.
+
+Macro Target Editor: Dynamic sliders to set daily grams of Fat, Protein, and Carbs.
+Keto Ratio Calculator: Automatic calculation of the 3:1 or 4:1 keto ratio based on nutrient inputs.
+Meal Plan Selector: Ability to assign pre-vetted meal plans (e.g., "High Fiber Breakfast") from the shared library.
+4. Interactive Meal Review
+A collaborative space to review parent-logged meals.
+
+Photo Logs: View high-quality images of meals submitted by parents (as seen in the breakfast_meal_plan views).
+Approved Food List: A toggle-based interface to mark specific ingredients or meals as "Approved" or "Avoid" for individual patients.
+Data Handling Architecture
+Patient Medical Records
+Demographics: Name, age, gender, patient ID.
+Clinical Stats: Baseline weight, target weight, specific keto protocol (Standard, MAD, LGIT).
+Prescription Data: Daily targets for Carbs, Fat, Protein, and total Calories.
+Longitudinal Monitoring Data
+Nutritional Logs: Structured JSON data of every meal (Food Name, Category, calculated Grams).
+Compliance Flags: Boolean indicators for whether a meal task was completed.
+Metabolic Values: Array of Ketone and Glucose readings with timestamps.
+Content & Assets
+Meal Library: A central database of meals with images (hosted on LH3 or similar), nutritional categories (e.g., "Healthy Fat"), and base macro values.
+Design Aesthetic (The Empathetic Guardian)
+The doctor's portal will use the same Vitality Soft design system as the parent app to ensure brand consistency:
+
+Typography: Inter (Bold 700 for headlines, Medium 500 for data labels).
+Colors: Primary (#006E2F) for growth, Secondary (#0058BE) for clinical trust.
+Atmospheric Depth: No harsh borders; depth achieved via tonal layering (surface-container-low vs surface-container-lowest).
+Verification Plan
+Interactive Prototype: Validate the "Macro Target Editor" logic ensures the Keto Ratio is accurately calculated.
+Data Flow Check: Verify that updates to a patient's prescription on the doctor side immediately reflect in the home_dashboard_with_dated_progress parent view.
+Responsive Testing: Ensure the dashboard is usable on both desktop (for in-clinic use) and tablet (for rounds).

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KetoKid Care - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdbca",
+              "outline-variant": "#bccbb9",
+              "on-tertiary-container": "#6d2d00",
+              "on-error": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-surface": "#191c1e",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#006e2f",
+              "surface-container-highest": "#e1e2e4",
+              "on-tertiary-fixed": "#341100",
+              "tertiary-fixed-dim": "#ffb690",
+              "surface-container": "#edeef0",
+              "on-secondary-container": "#fefcff",
+              "surface": "#f8f9fb",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#002109",
+              "primary-fixed-dim": "#4ae176",
+              "on-secondary-fixed-variant": "#004395",
+              "secondary": "#0058be",
+              "primary": "#006e2f",
+              "on-secondary": "#ffffff",
+              "primary-fixed": "#6bff8f",
+              "surface-container-low": "#f3f4f6",
+              "on-secondary-fixed": "#001a42",
+              "tertiary-container": "#ff8e4d",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#005321",
+              "inverse-on-surface": "#f0f1f3",
+              "secondary-fixed": "#d8e2ff",
+              "surface-bright": "#f8f9fb",
+              "surface-variant": "#e1e2e4",
+              "secondary-fixed-dim": "#adc6ff",
+              "on-primary-container": "#004b1e",
+              "primary-container": "#22c55e",
+              "surface-container-high": "#e7e8ea",
+              "surface-dim": "#d9dadc",
+              "secondary-container": "#2170e4",
+              "tertiary": "#9d4300",
+              "on-surface-variant": "#3d4a3d",
+              "inverse-surface": "#2e3132",
+              "error": "#ba1a1a",
+              "on-background": "#191c1e",
+              "background": "#f8f9fb",
+              "inverse-primary": "#4ae176",
+              "on-tertiary-fixed-variant": "#783200",
+              "error-container": "#ffdad6",
+              "outline": "#6d7b6c"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<main class="min-h-screen flex flex-col items-center justify-center p-6 sm:p-12 relative overflow-hidden">
+<!-- Background Accents -->
+<div class="absolute -top-32 -right-32 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-secondary-container/5 rounded-full blur-3xl"></div>
+<div class="w-full max-w-md z-10 flex flex-col items-center">
+<!-- Centered Illustration Section -->
+<div class="flex flex-col items-center space-y-8 mb-12 w-full">
+<div class="relative w-72 h-72 flex items-center justify-center">
+<div class="absolute inset-0 bg-white rounded-full shadow-xl shadow-primary/5 opacity-80"></div>
+<img alt="Friendly medical staff caring for a child" class="relative z-10 w-60 h-60 object-contain" data-alt="Friendly illustration of a nurse holding a digital tablet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAoORbOcTQnhSd1-Ge9lP3lPJRlz0RRohoZl7pg_EodepQpIYJBlSUpDrfZU70AlhxaoJ3ZmC1EC7vTNahxOweqkh7Y8aqpDvqU7xqpKJKeg243fz6XkAfz0Len4af95tphKEBUeazyaE_dBVMVWN3-llb12VyI-PnE92D7-4Nf07eskIgTBSIfYytY6Mw7MyRvmIsl3A1Cf1-1IKZj-vAhcvxMcsk0UmsLG5TRTvNuRESzXo8T0KPbT9mFwLCvND6n5v56kX2PzD-"/>
+</div>
+<div class="text-center space-y-2">
+<h1 class="text-on-surface font-headline font-extrabold text-4xl tracking-tight">
+                        Welcome back
+                    </h1>
+<p class="text-on-surface-variant text-lg font-medium opacity-80 max-w-[320px] mx-auto leading-snug">
+                        Enter your hospital token to access your child profile
+                    </p>
+</div>
+</div>
+<!-- Modern Airy Login Form -->
+<div class="w-full bg-surface-container-lowest p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-primary/5 space-y-8">
+<div class="space-y-6">
+<!-- Token Input Field -->
+<div class="space-y-2">
+<label class="block text-on-surface-variant font-label text-sm font-semibold ml-1" for="token">
+                            Token code
+                        </label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant/40 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+</div>
+<input class="w-full h-16 pl-14 pr-6 bg-surface-container-high/50 border-0 rounded-full focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/40 font-medium text-lg" id="token" name="token" placeholder="Enter token" type="text"/>
+</div>
+<div class="flex items-center gap-2 ml-4 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[18px]" data-icon="info">info</span>
+<p class="text-[13px] font-medium">Token provided by hospital</p>
+</div>
+</div>
+<!-- Prominent Vitality Soft Button -->
+<button class="group w-full h-16 bg-primary text-on-primary rounded-full font-bold text-lg flex items-center justify-center gap-3 active:scale-[0.98] transition-all hover:shadow-xl hover:shadow-primary/30 hover:bg-primary/95">
+<span>Continue</span>
+<span class="material-symbols-outlined text-2xl transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Subtle Support Link -->
+<div class="text-center">
+<button class="text-primary text-[15px] font-bold hover:underline decoration-2 underline-offset-4 transition-all">
+                        Need help finding your token?
+                    </button>
+</div>
+</div>
+<!-- HIPAA Compliance & Brand Footer -->
+</div>
+</main>
+</body></html>

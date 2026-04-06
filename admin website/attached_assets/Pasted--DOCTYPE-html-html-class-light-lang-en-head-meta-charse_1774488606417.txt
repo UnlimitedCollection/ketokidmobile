@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clinical Precision | Children Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#003ea8",
+              "surface-variant": "#e0e3e5",
+              "surface-bright": "#f7f9fb",
+              "secondary-fixed-dim": "#ffb95f",
+              "secondary-fixed": "#ffddb8",
+              "inverse-on-surface": "#eff1f3",
+              "on-surface-variant": "#434655",
+              "inverse-surface": "#2d3133",
+              "tertiary": "#ae0010",
+              "secondary-container": "#fea619",
+              "on-background": "#191c1e",
+              "error": "#ba1a1a",
+              "primary-container": "#2563eb",
+              "on-primary-container": "#eeefff",
+              "surface-dim": "#d8dadc",
+              "surface-container-high": "#e6e8ea",
+              "outline": "#737686",
+              "error-container": "#ffdad6",
+              "background": "#f7f9fb",
+              "on-tertiary-fixed-variant": "#93000b",
+              "inverse-primary": "#b4c5ff",
+              "on-error-container": "#93000a",
+              "on-surface": "#191c1e",
+              "tertiary-fixed": "#ffdad6",
+              "outline-variant": "#c3c6d7",
+              "on-tertiary-container": "#ffecea",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4ab",
+              "on-tertiary-fixed": "#410002",
+              "surface-tint": "#0053db",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "secondary": "#855300",
+              "on-secondary-fixed-variant": "#653e00",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-primary-fixed": "#00174b",
+              "surface": "#f7f9fb",
+              "on-primary": "#ffffff",
+              "surface-container": "#eceef0",
+              "on-secondary-container": "#684000",
+              "on-secondary-fixed": "#2a1700",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#d52022",
+              "primary": "#004ac6",
+              "on-secondary": "#ffffff",
+              "surface-container-low": "#f2f4f6",
+              "primary-fixed": "#dbe1ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-lg font-bold text-blue-900 dark:text-blue-100">Clinical Precision</h1>
+<p class="text-xs text-on-surface-variant font-medium opacity-70">The Digital Surgeon</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors duration-200 font-sans Inter tracking-tight font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+            Dashboard
+        </a>
+<!-- Children (Active Mapping) -->
+<a class="flex items-center gap-3 px-4 py-3 text-blue-700 dark:text-blue-400 font-bold border-r-4 border-blue-700 dark:border-blue-500 bg-white dark:bg-slate-950 font-sans Inter tracking-tight text-sm scale-[0.99] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+            Children
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors duration-200 font-sans Inter tracking-tight font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+            Analysis
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors duration-200 font-sans Inter tracking-tight font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+            Food Visibility
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors duration-200 font-sans Inter tracking-tight font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+            Recipe Visibility
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors duration-200 font-sans Inter tracking-tight font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="sticky_note_2">sticky_note_2</span>
+            Private Notes
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors duration-200 font-sans Inter tracking-tight font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="error_outline">error_outline</span>
+            Missing Records
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors duration-200 font-sans Inter tracking-tight font-medium text-sm mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+            Settings
+        </a>
+</nav>
+</aside>
+<!-- Main Viewport -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full z-40 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md border-b border-slate-200/20 dark:border-slate-800/20 shadow-sm dark:shadow-none h-16 px-8 flex justify-between items-center">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/50" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low rounded-xl border-none focus:ring-2 focus:ring-primary/20 text-sm font-sans" placeholder="Search by name, ID, or parent..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-500 hover:text-blue-700 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200"></div>
+<div class="flex items-center gap-3">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-container transition-all active:opacity-80">
+                    Quick Add
+                </button>
+<img class="h-9 w-9 rounded-full object-cover ring-2 ring-primary/10" data-alt="Doctor portrait profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-XTFmoC8AfWwc7p0vphohehS_XXZAHsJZWSbNFNH_ShX4TjjOlpQVoobGjCm6QZPosRaIVJ6esw9ukgppD__nnzXfFa-2vRbJ_FplQ9MZfx-fuBk8Jvv9BNceFInvfcPGKo_ZMjuf17Le2AS4krjiW_YR6FaqvdjE6TZ9XOzYaotxYBP8oZrYSnq3ozEg0-Vq_ZzCZHI0mtMkJawggL9yyckE8vjOT7GPH6lrpZhLDIrPbBClAHS45d06edKimce-UOo2DXPS7nKy"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-10 space-y-8">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Children Directory</h2>
+<p class="text-on-surface-variant font-medium mt-1">Manage and track patient pediatric records with surgical precision.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full text-sm font-semibold text-on-surface hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> Export CSV
+                </button>
+</div>
+</div>
+<!-- Filter Toolbar Bento Grid Style -->
+<div class="grid grid-cols-12 gap-4">
+<!-- Phases Filter -->
+<div class="col-span-12 lg:col-span-6 p-6 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(25,28,30,0.04)]">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/70">Clinical Phase</span>
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="clinical_notes">clinical_notes</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full text-sm font-semibold bg-primary text-on-primary border border-primary">Phase 1</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-semibold bg-surface-container-low text-on-surface hover:bg-surface-container-high transition-colors">Phase 2</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-semibold bg-surface-container-low text-on-surface hover:bg-surface-container-high transition-colors">Phase 3</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-semibold bg-surface-container-low text-on-surface hover:bg-surface-container-high transition-colors">Phase 4</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-semibold bg-surface-container-low text-on-surface hover:bg-surface-container-high transition-colors">All Phases</button>
+</div>
+</div>
+<!-- Dropdown Selectors -->
+<div class="col-span-12 lg:col-span-6 p-6 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(25,28,30,0.04)] grid grid-cols-3 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/70">Risk Level</label>
+<select class="bg-surface-container-low border-none rounded-lg text-sm font-medium py-2 focus:ring-primary/20">
+<option>All Risks</option>
+<option>High Priority</option>
+<option>Moderate</option>
+<option>Stable</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/70">Missing Data</label>
+<select class="bg-surface-container-low border-none rounded-lg text-sm font-medium py-2 focus:ring-primary/20">
+<option>None</option>
+<option>Vitals Missing</option>
+<option>ID Proof</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/70">Sort By</label>
+<select class="bg-surface-container-low border-none rounded-lg text-sm font-medium py-2 focus:ring-primary/20">
+<option>Last Updated</option>
+<option>Risk (High to Low)</option>
+<option>Name (A-Z)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(25,28,30,0.04)] overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant/20">
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Kid Name</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Kid ID</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Age</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Phase</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Parent</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Risk Status</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Last Update</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">JD</div>
+<span class="font-bold text-on-surface">Julianne Dorsey</span>
+</div>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-on-surface-variant">#CP-9021-X</td>
+<td class="px-6 py-5 text-on-surface font-medium">4y 2m</td>
+<td class="px-6 py-5">
+<span class="bg-primary/5 text-primary border border-primary/20 px-3 py-1 rounded-full text-xs font-bold">Phase 1</span>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Michael Dorsey</td>
+<td class="px-6 py-5">
+<span class="bg-tertiary-container text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> High Risk
+                        </span>
+</td>
+<td class="px-6 py-5 text-xs text-on-surface-variant font-medium italic">2 hours ago</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Open Profile">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Add Note">
+<span class="material-symbols-outlined" data-icon="sticky_note_2">sticky_note_2</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors font-bold text-xs" title="Update Weight">
+<span class="material-symbols-outlined" data-icon="monitor_weight">monitor_weight</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary font-bold">AL</div>
+<span class="font-bold text-on-surface">Aaron Levin</span>
+</div>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-on-surface-variant">#CP-8812-Y</td>
+<td class="px-6 py-5 text-on-surface font-medium">6y 8m</td>
+<td class="px-6 py-5">
+<span class="bg-surface-container-high text-on-surface-variant border border-outline-variant/20 px-3 py-1 rounded-full text-xs font-bold">Phase 3</span>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Sarah Levin</td>
+<td class="px-6 py-5">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-xs font-bold">Moderate</span>
+</td>
+<td class="px-6 py-5 text-xs text-on-surface-variant font-medium italic">Yesterday, 14:20</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span></button>
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="sticky_note_2">sticky_note_2</span></button>
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"><span class="material-symbols-outlined" data-icon="monitor_weight">monitor_weight</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-primary-fixed-dim flex items-center justify-center text-on-primary-fixed-variant font-bold">MT</div>
+<span class="font-bold text-on-surface">Marcus Thorne</span>
+</div>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-on-surface-variant">#CP-7721-Z</td>
+<td class="px-6 py-5 text-on-surface font-medium">12y 1m</td>
+<td class="px-6 py-5">
+<span class="bg-primary/5 text-primary border border-primary/20 px-3 py-1 rounded-full text-xs font-bold">Phase 1</span>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Elena Thorne</td>
+<td class="px-6 py-5">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">Stable</span>
+</td>
+<td class="px-6 py-5 text-xs text-on-surface-variant font-medium italic">3 days ago</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span></button>
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="sticky_note_2">sticky_note_2</span></button>
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"><span class="material-symbols-outlined" data-icon="monitor_weight">monitor_weight</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface font-bold">BK</div>
+<span class="font-bold text-on-surface">Bella King</span>
+</div>
+</td>
+<td class="px-6 py-5 font-mono text-sm text-on-surface-variant">#CP-1022-A</td>
+<td class="px-6 py-5 text-on-surface font-medium">2y 4m</td>
+<td class="px-6 py-5">
+<span class="bg-surface-container-high text-on-surface-variant border border-outline-variant/20 px-3 py-1 rounded-full text-xs font-bold">Phase 4</span>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Richard King</td>
+<td class="px-6 py-5">
+<span class="bg-tertiary-container text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-xs font-bold">High Risk</span>
+</td>
+<td class="px-6 py-5 text-xs text-on-surface-variant font-medium italic">14 mins ago</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span></button>
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="sticky_note_2">sticky_note_2</span></button>
+<button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"><span class="material-symbols-outlined" data-icon="monitor_weight">monitor_weight</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-low/30 border-t border-outline-variant/10 flex items-center justify-between">
+<span class="text-sm text-on-surface-variant font-medium">Showing <span class="text-on-surface font-bold">4</span> of <span class="text-on-surface font-bold">128</span> pediatric records</span>
+<div class="flex gap-1">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<button class="px-3 py-1 rounded-lg bg-primary text-on-primary text-sm font-bold">1</button>
+<button class="px-3 py-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant text-sm font-bold">2</button>
+<button class="px-3 py-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant text-sm font-bold">3</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Stats Recap / Bento Sub-grid -->
+<div class="grid grid-cols-4 gap-6">
+<div class="bg-primary/5 p-6 rounded-xl border border-primary/10">
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold text-xs uppercase tracking-widest">In Phase 1</span>
+<span class="material-symbols-outlined text-primary/40" data-icon="step_one">steps</span>
+</div>
+<p class="text-3xl font-extrabold mt-2 text-primary">34</p>
+<p class="text-xs text-primary/60 font-medium mt-1">+2 from last week</p>
+</div>
+<div class="bg-tertiary/5 p-6 rounded-xl border border-tertiary/10">
+<div class="flex items-center justify-between">
+<span class="text-tertiary font-bold text-xs uppercase tracking-widest">High Alert</span>
+<span class="material-symbols-outlined text-tertiary/40" data-icon="emergency">emergency</span>
+</div>
+<p class="text-3xl font-extrabold mt-2 text-tertiary">08</p>
+<p class="text-xs text-tertiary/60 font-medium mt-1">Requires immediate review</p>
+</div>
+<div class="bg-secondary/5 p-6 rounded-xl border border-secondary/10">
+<div class="flex items-center justify-between">
+<span class="text-secondary font-bold text-xs uppercase tracking-widest">Data Integrity</span>
+<span class="material-symbols-outlined text-secondary/40" data-icon="database">database</span>
+</div>
+<p class="text-3xl font-extrabold mt-2 text-secondary">98%</p>
+<p class="text-xs text-secondary/60 font-medium mt-1">Missing vital records: 12</p>
+</div>
+<div class="bg-on-surface-variant/5 p-6 rounded-xl border border-outline-variant/20">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-bold text-xs uppercase tracking-widest">Avg Growth</span>
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="trending_up">trending_up</span>
+</div>
+<p class="text-3xl font-extrabold mt-2 text-on-surface">+1.2 kg</p>
+<p class="text-xs text-on-surface-variant/60 font-medium mt-1">Cohort average (3-5y)</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Trigger -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</div>
+</body></html>

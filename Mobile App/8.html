@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KetoKid Care - Meal Planner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#e7e8ea",
+              "surface-container": "#edeef0",
+              "tertiary": "#9d4300",
+              "secondary-container": "#2170e4",
+              "error-container": "#ffdad6",
+              "surface-dim": "#d9dadc",
+              "secondary-fixed": "#d8e2ff",
+              "primary-fixed": "#6bff8f",
+              "on-background": "#191c1e",
+              "background": "#f8f9fb",
+              "surface": "#f8f9fb",
+              "secondary-fixed-dim": "#adc6ff",
+              "tertiary-fixed": "#ffdbca",
+              "outline-variant": "#bccbb9",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#004b1e",
+              "inverse-primary": "#4ae176",
+              "secondary": "#0058be",
+              "surface-tint": "#006e2f",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f0f1f3",
+              "on-secondary-container": "#fefcff",
+              "primary-fixed-dim": "#4ae176",
+              "on-tertiary-container": "#6d2d00",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb690",
+              "surface-container-low": "#f3f4f6",
+              "on-secondary-fixed": "#001a42",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#005321",
+              "on-tertiary-fixed": "#341100",
+              "on-surface-variant": "#3d4a3d",
+              "surface-bright": "#f8f9fb",
+              "primary-container": "#22c55e",
+              "primary": "#006e2f",
+              "on-secondary-fixed-variant": "#004395",
+              "on-tertiary-fixed-variant": "#783200",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "surface-container-highest": "#e1e2e4",
+              "on-surface": "#191c1e",
+              "surface-variant": "#e1e2e4",
+              "on-primary-fixed": "#002109",
+              "tertiary-container": "#ff8e4d",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#6d7b6c"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-[#F8F9FB] font-body text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-sm h-auto flex flex-col items-start justify-center px-6 py-6">
+<div class="flex items-center gap-4 w-full">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 -ml-2 rounded-full hover:bg-slate-100 transition-colors duration-200">
+<span class="material-symbols-outlined text-on-background text-2xl">chevron_left</span>
+</button>
+<div>
+<h1 class="font-headline font-bold text-2xl text-on-background tracking-tight">
+                Breakfast Meal Plan
+            </h1>
+<p class="text-sm text-on-surface-variant font-medium mt-1">
+                Manage your child's daily nutrition
+            </p>
+</div>
+</div>
+</header>
+<main class="px-6 max-w-2xl mx-auto space-y-8 pt-28">
+<!-- Breakfast Progress Hero Section -->
+<section class="relative overflow-hidden rounded-[2.5rem] bg-[#22C55E] text-white shadow-2xl shadow-green-200/40 py-6 px-8">
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-bold text-[11px] opacity-90 uppercase tracking-[0.15em]">OVERALL DAILY PROGRESS</p>
+<h2 class="text-[42px] font-extrabold tracking-tight leading-[1.1]">Breakfast<br/>Progress</h2>
+<p class="text-lg font-medium opacity-90 leading-tight max-w-[190px]">Almost there! Just a few more grams.</p>
+</div>
+<!-- Circular Progress Chart -->
+<div class="relative flex-shrink-0 flex items-center justify-center w-[120px] h-[120px] -mr-2">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<circle class="text-white/20" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="10"></circle>
+<circle class="text-white" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.32" stroke-dashoffset="62.83" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center mt-0.5">
+<span class="text-2xl font-black">75%</span>
+<span class="text-[9px] font-bold tracking-widest opacity-80 uppercase -mt-0.5">DONE</span>
+</div>
+</div>
+</div>
+<!-- Date Annotation -->
+<div class="flex flex-col items-end w-full mt-6">
+<span class="text-xl font-bold tracking-[0.1em] opacity-90 uppercase">MONDAY</span>
+<span class="font-black tracking-tight leading-none mt-1">23/03/2026</span>
+</div>
+</div>
+<!-- Subtle Glow Effect -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
+</section>
+<!-- KPI Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Carbs - Active/Selected state -->
+<div class="bg-secondary p-5 rounded-[20px] shadow-[0_4px_20px_rgba(0,88,190,0.2)] flex flex-col justify-between aspect-square ring-2 ring-secondary ring-offset-2">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl" style='font-variation-settings: "FILL" 1;'>grid_view</span>
+</div>
+<span class="text-[10px] font-bold text-white uppercase tracking-widest mt-1">Carbs</span>
+</div>
+<div class="space-y-3 flex-1 flex flex-col">
+<div class="flex-1 flex items-center justify-center">
+<span class="font-bold text-white text-5xl">60G</span>
+</div>
+</div>
+</div>
+<!-- Fat -->
+<div class="bg-white p-5 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between aspect-square bg-slate-50/50 opacity-60 grayscale-[0.5]">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined text-xl" style='font-variation-settings: "FILL" 1;'>opacity</span>
+</div>
+<span class="text-[10px] font-bold text-green-600 uppercase tracking-widest mt-1">Fat</span>
+</div>
+<div class="space-y-3 flex-1 flex flex-col">
+<div class="flex-1 flex items-center justify-center">
+<span class="font-bold text-on-surface text-5xl">80G</span>
+</div>
+</div>
+</div>
+<!-- Protein -->
+<div class="bg-white p-5 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between aspect-square bg-slate-50/50 opacity-60 grayscale-[0.5]">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-700">
+<span class="material-symbols-outlined text-xl" style='font-variation-settings: "FILL" 1;'>fitness_center</span>
+</div>
+<span class="text-[10px] font-bold text-orange-700 uppercase tracking-widest mt-1">Protein</span>
+</div>
+<div class="space-y-3 flex-1 flex flex-col">
+<div class="flex-1 flex items-center justify-center">
+<span class="font-bold text-on-surface text-5xl">50G</span>
+</div>
+</div>
+</div>
+<!-- Calories -->
+<div class="bg-white p-5 rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between aspect-square bg-slate-50/50 opacity-60 grayscale-[0.5]">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-700">
+<span class="material-symbols-outlined text-xl" style='font-variation-settings: "FILL" 1;'>local_fire_department</span>
+</div>
+<span class="text-[10px] font-bold text-slate-700 uppercase tracking-widest mt-1">Calories</span>
+</div>
+<div class="space-y-3 flex-1 flex flex-col">
+<div class="flex-1 flex items-center justify-center">
+<span class="font-bold text-on-surface text-5xl">900</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Food Card List -->
+<section class="space-y-6">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-headline text-xl font-bold text-on-surface">Choose The Meal</h3>
+</div>
+<div class="space-y-6">
+<!-- White Rice Card (Collapsed) -->
+<div class="bg-white rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300">
+<div class="relative w-full aspect-[16/9] overflow-hidden">
+<img alt="White Rice" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiJg-BxmsRqkPNTwgRU5WCTB-xOkjcP5A6gXVhqQ-KDNdt23jAhpiemrHWPfT4ib37yRLhv8U7XkmRiPKFAEUV7UROv5_QMwcDkKS6-vEKr02lNjZch4uQiSj41Bu6tFvB6igqzTqj70yQUD-3T6s0KmrvJyJtgqXDrdxqf2uk0OtpCXfPL6f0OlQW8KrkLqjIoiE1rMEJq4eTqn9B2k3KAy4LRVwg7hMR75apomEyruvEEtUcyXb5U7H5ioaxjoXNdigJ4ZknhxX9"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md text-[#006e2f] text-[10px] font-bold uppercase tracking-wider rounded-full border border-green-100">Simple Carb</span>
+</div>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div>
+<h4 class="font-headline text-xl font-bold text-on-surface">White Rice</h4>
+</div>
+<div class="bg-secondary rounded-full px-4 py-2 flex flex-col items-center justify-center text-white min-w-[80px]">
+<span class="text-[8px] font-bold opacity-80 uppercase leading-none">QTY</span>
+<span class="text-xs font-black leading-tight whitespace-nowrap uppercase">1 Cup</span>
+</div>
+</div>
+</div>
+<!-- Fresh Avocado Card (Expanded) -->
+<div class="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 ring-2 ring-primary/5">
+<div class="relative w-full aspect-[16/9] overflow-hidden">
+<img alt="Fresh Avocado" class="w-full h-full object-cover scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD10CV8yOrQ2r-oHTIQc43cCfhA7Z7sxMWLRT5G6Umj2hHo9wlpWwkOZBKR9RfDOVNWugHR0EAkBXtaKHzT0o1YCzd6nyFTEqtZNg7-UHI-mDdwIpIjHgl0ITfKlP4sEhjHoO_KXJEdDKjwShFH8dSd80ODyb9pBoqSaOExPwSyS2L40liitDFYBqej0v4Dg5zl7MTLNzw5ggrtFDgIkc5a_Oh01BUy0ww3gb5iqh5CkfFuBW7lwOTnAIr2szD3-uQSQmkuFE0b-S93"/>
+<div class="absolute top-4 left-4">
+<span class="px-4 py-1.5 bg-white/95 backdrop-blur-md text-[#006e2f] text-[11px] font-bold uppercase tracking-wider rounded-full shadow-sm border border-green-100">Healthy Fat</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-headline text-2xl font-black text-on-surface">Fresh Avocado</h4>
+<div class="bg-secondary rounded-full px-5 py-2 flex flex-col items-center justify-center text-white min-w-[100px] shadow-sm">
+<span class="text-[8px] font-bold opacity-80 uppercase leading-none">QTY</span>
+<span class="text-xs font-black leading-tight whitespace-nowrap uppercase tracking-tighter">1/2 Avocado</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-medium opacity-90">
+                        Creamy, heart-healthy Hass avocado rich in potassium and monounsaturated fats. Served as a simple sliced portion, ideal for quick fuel or as a side to any keto main dish.
+                    </p>
+<!-- Macro Pills -->
+<!-- Select Button -->
+<button class="w-full bg-primary text-white py-4 rounded-2xl font-bold text-sm tracking-wide shadow-lg shadow-green-100 flex items-center justify-center gap-2 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Select Meal
+                    </button>
+</div>
+</div>
+<!-- Boiled Eggs Card (Collapsed) -->
+<div class="bg-white rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300">
+<div class="relative w-full aspect-[16/9] overflow-hidden">
+<img alt="Boiled Eggs" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs9_AhRt15tjj6WX5Qujcx9Z1sJON2JOr14VuJFp-CcIj8rsQtCavBvUEZMa4bENXI4E-H-D7M6vrualsFkhfvDGXzmg3Km_3VL4o6RbYDx6I_vWf7YHrTBIU13OK43XXoNCiz0SK8qJF22F_OcLdptUfJgk638sPubZrBHuItigIgHxowzWCXx-EpUC8Qyi5Z8VA2ijU4cBY67aJJtHSSlVXHN60TnRB9SXTwzJlli8GmVq9yJIM2agsdUNfxDLH5CUTElDHwrQ0U"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md text-[#006e2f] text-[10px] font-bold uppercase tracking-wider rounded-full border border-green-100">Pure Protein</span>
+</div>
+</div>
+<div class="p-6 flex items-center justify-between">
+<div>
+<h4 class="font-headline text-xl font-bold text-on-surface">Boiled Eggs</h4>
+</div>
+<div class="bg-secondary rounded-full px-4 py-2 flex flex-col items-center justify-center text-white min-w-[80px]">
+<span class="text-[8px] font-bold opacity-80 uppercase leading-none">QTY</span>
+<span class="text-xs font-black leading-tight whitespace-nowrap uppercase">2 Eggs</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-8 pt-3 bg-white/80 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-4px_40px_rgba(0,110,47,0.06)]">
+<div class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-green-600 active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-green-100 text-green-800 rounded-full px-5 py-2 active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="add_circle" style='font-variation-settings: "FILL" 1;'>add_circle</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Log</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-green-600 active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Child</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-green-600 active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Settings</span>
+</div>
+</nav>
+</body></html>

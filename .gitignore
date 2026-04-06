@@ -1,0 +1,4 @@
+*.zip
+admin website/database-backup/
+*.sql
+env-secrets.txt

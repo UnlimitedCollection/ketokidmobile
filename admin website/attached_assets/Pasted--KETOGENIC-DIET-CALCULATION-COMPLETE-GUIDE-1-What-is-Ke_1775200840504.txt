@@ -1,0 +1,156 @@
+# 🧠 KETOGENIC DIET CALCULATION (COMPLETE GUIDE)
+
+---
+
+## 🔹 1. What is Keto Ratio?
+
+Keto ratio = Fat : (Protein + Carbohydrate)
+
+Examples:
+- 2:1 → Fat is 2× (Protein + Carbs)
+- 3:1 → Fat is 3× (Protein + Carbs)
+- 4:1 → Fat is 4× (Protein + Carbs)
+
+---
+
+## 🔹 2. Energy Values
+
+- Fat = 9 kcal/g
+- Protein = 4 kcal/g
+- Carbohydrate = 4 kcal/g
+
+---
+
+## 🔹 3. Core Formula
+
+Energy per unit:
+(R × 9) + (1 × 4)
+
+Where:
+R = keto ratio
+
+---
+
+## 🔹 4. General Steps
+
+1. Calculate total calories
+2. Calculate energy per unit
+3. Find total dietary units:
+   Units = Total Calories / Energy per unit
+4. Protein:
+   = 1 g/kg body weight
+5. Carbohydrates:
+   = Units − Protein
+6. Fat:
+   = Units × R
+
+---
+
+## 🔹 5. Example (22 kg child)
+
+Total calories = 1860 kcal  
+Protein = 1 g/kg = 22 g  
+
+---
+
+## 🔹 6. Calculations for Different Ratios
+
+---
+
+### ✅ 2:1 Ratio
+
+Energy/unit = (2×9)+4 = 22  
+Units = 1860 / 22 = 84.5  
+
+- Protein = 22 g  
+- Carbs = 84.5 − 22 = 62.5 g  
+- Fat = 84.5 × 2 = 169 g  
+
+---
+
+### ✅ 2.5:1 Ratio
+
+Energy/unit = (2.5×9)+4 = 26.5  
+Units ≈ 1860 / 26.5 ≈ 70  
+
+- Protein = 22 g  
+- Carbs = 70 − 22 = 48 g  
+- Fat = 70 × 2.5 = 175 g  
+
+---
+
+### ✅ 3:1 Ratio
+
+Energy/unit = (3×9)+4 = 31  
+Units = 1860 / 31 = 60  
+
+- Protein = 22 g  
+- Carbs = 60 − 22 = 38 g  
+- Fat = 60 × 3 = 180 g  
+
+---
+
+### ✅ 3.5:1 Ratio
+
+Energy/unit = (3.5×9)+4 = 35.5  
+Units ≈ 1860 / 35.5 ≈ 52.4  
+
+- Protein = 22 g  
+- Carbs ≈ 52.4 − 22 = 30.4 g  
+- Fat ≈ 52.4 × 3.5 = 183 g  
+
+---
+
+### ✅ 4:1 Ratio
+
+Energy/unit = (4×9)+4 = 40  
+Units = 1860 / 40 = 46.5  
+
+- Protein = 22 g  
+- Carbs = 46.5 − 22 = 24.5 g  
+- Fat = 46.5 × 4 = 186 g  
+
+---
+
+## 🔹 7. Final Summary Table
+
+| Ratio | Fat (g) | Protein (g) | Carbs (g) |
+|------|--------|------------|----------|
+| 2:1   | 169    | 22         | 62.5     |
+| 2.5:1 | 175    | 22         | 48       |
+| 3:1   | 180    | 22         | 38       |
+| 3.5:1 | 183    | 22         | 30.4     |
+| 4:1   | 186    | 22         | 24.5     |
+
+---
+
+## 🔹 8. Key Points (IMPORTANT)
+
+- As ratio ↑ → Fat ↑
+- Carbohydrates ↓
+- Protein remains constant
+
+---
+
+## 🔹 9. Quick Exam Shortcut
+
+1. Energy/unit = (R×9 + 4)
+2. Units = Total kcal / Energy/unit
+3. Protein = 1 g/kg
+4. Carbs = Units − Protein
+5. Fat = Units × R
+
+---
+
+## 🔹 10. One-Line Formula Memory Trick
+
+Units = Total kcal / (9R + 4)
+
+Then:
+- Protein = 1 g/kg
+- Carbs = Units − Protein
+- Fat = Units × R
+
+---
+
+✅ This method works for ANY keto ratio (2:1, 2.5:1, 3:1, 3.5:1, 4:1, etc.)
